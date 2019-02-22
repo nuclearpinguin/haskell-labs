@@ -14,11 +14,11 @@ taylorSinSeries x n = taylorConcat x 1 n [x] x
 
 -- Helper for taylorSinSeries
 taylorConcat :: Double -> Integer -> Integer -> [Double] -> Double -> [Double]
-taylorConcat x i n s last 
+taylorConcat x i n s last_el 
     | i <= n+1 = taylorConcat x (i+2) n new_s new_last
     | otherwise = s
     where
-        new_last = taylorSinNext x i last
+        new_last = taylorSinNext x i last_el
         new_s = s ++ [new_last]
 
 -- Oh well...
@@ -33,15 +33,16 @@ taylorSin x n = taylorAdder x 1 n x x
 
 -- Helper for taylorSin
 taylorAdder :: Double -> Integer -> Integer -> Double -> Double -> Double
-taylorAdder x i n s last 
+taylorAdder x i n s last_el 
     | i <= n+1 = taylorAdder x (i+2) n new_s new_last
     | otherwise = s
     where
-        new_last = taylorSinNext x i last
+        new_last = taylorSinNext x i last_el
         new_s = s + new_last
 
 
 -- Using the last element of series and present index i 
 -- it evaluates next element for a given x 
 taylorSinNext :: Double -> Integer -> Double -> Double
-taylorSinNext x i last = (last * x^2)  * (-1) /  fromIntegral( (i+1) * (i+2) )
+taylorSinNext x i last_el = (last_el * x^2)  * (-1) /  fromIntegral( (i+1) * (i+2) )
+
