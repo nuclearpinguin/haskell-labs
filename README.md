@@ -6,11 +6,6 @@
 User: password
 Pass: user
 
-Haskell compiler:
-```
-> ghci
-```
-
 
 # Lecture 1 21.02.19
 
@@ -55,8 +50,6 @@ map func []
 foldl func def_value [] --reduce
 foldl (+) 0 [1,2,3,4]
 ```
-
-TODO: sinTylor!
 
 # Lecture 2 28.02.19
 
