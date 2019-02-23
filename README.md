@@ -29,7 +29,7 @@ Fucntional programming languages, some informal talk:
 - Weak head normal form (WHNM) = most-outer constructor is evaluable 
 
 
-Because we have CCC:
+Because we have [CCC](https://ncatlab.org/nlab/show/cartesian+closed+category):
 ```
 A->B->C = A -> (B->C) ~ A -> (1 -> C^B) ~ A -> C^B ~ A x B -> C
 ```
