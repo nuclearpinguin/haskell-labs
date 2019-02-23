@@ -1,7 +1,7 @@
-# ubiquitous-parakeet
+# Functional Programming at WUT
 
 1. Notes from lectures 
-2. Codes from labs
+2. Codes from labs and more
 
 User: password
 Pass: user
