@@ -16,14 +16,14 @@ Pass: user
 
 
 ### Theory scope:
-- lambda-calculus - on of the simplest programming languages
-- monads and it uses in FP
+- lambda-calculus - one of the simplest programming languages
+- monads and its use in FP
 - lazy evalutaion
 
 Fucntional programming languages, some informal talk:
-- declarative - you focus more on what to do rather than how to to this
+- declarative - you focus more on what to do rather than how to to
 - no side-effects - sometimes functions use env or global variables or things like that what makes the code non-deterministic
-- lazy-eval - inner-most or outer-most , lazy-eval means that we start with evaluation of outer-most expressions. In other words if you don't have to use something then do not evaluate that.
+- lazy-eval - means that we start with evaluation of outer-most expressions. In other words if you don't have to use something then do not evaluate that.
 - T: Lazy-eval evaluates in no more steps than eager evaluation.
 - Expression has a *normal form* if it's fully evaluable.
 - Weak head normal form (WHNM) = most-outer constructor is evaluable 
