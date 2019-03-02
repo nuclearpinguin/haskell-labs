@@ -10,6 +10,7 @@ Notes from lectures and codes from labs. This repo has the following structure:
 ...
 ```
 
-User: password
-Pass: user
+### Additional sources:
+
+https://github.com/geophf/1HaskellADay
 

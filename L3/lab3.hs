@@ -35,3 +35,32 @@ anytrue [] = False
 anytrue xs = foldr (||) False xs
 
 test_anytrue = anytrue ([False, True, False]++repeat False)
+
+-- #I2
+leibnitzpi :: Double
+leibnitzpi = 4.0 * (fst $ foldl' (?) (1.0, 1.0) (map (1/) [3, 5 .. 20001]))
+    where
+        (x, i) ? y = (x  + (-1.0 * i) * y, -1.0 * i)
+
+
+-- #I7
+-- Sum numbers in list form ex. 103 = [1, 0, 3]
+sumList :: [Int] -> [Int] -> [Int]
+sumList xs ys 
+    | lxs > lys = (take d xs)  ++ s
+    | otherwise = (take d ys)  ++ s
+    where
+        lxs = length xs
+        lys = length ys
+        d = abs (lxs - lys) 
+        s = reverse $ zipWith (+) (reverse xs) (reverse ys)
+        
+-- #I10
+-- Lazy filter implementation
+lazyFilter :: (a -> Bool) -> [a] -> [a]
+lazyFilter c xs = foldr f [] xs
+    where
+        f a b | (c a) = [a] ++ b | otherwise = b
+
+
+test = take 5 $ lazyFilter ((== 0) . (`mod` 2)) [1,2..]
