@@ -35,10 +35,9 @@ Bang patterns
 ...
 ```
 
-Some base:
-```haskell
-map func []
-foldl func def_value [] --reduce
-foldl (+) 0 [1,2,3,4]
-```
-
+RWH p.108
+> As for anonymous functions, they tend to interrupt the “flow” of reading a piece of code. 
+> It is very often as easy to write a local function definition in a let or where clause and 
+> use that as it is to put an anonymous function into place. The relative advantages of a named 
+> function are twofold: we don’t need to understand the function’s definition when we’re reading 
+> the code that uses it, and a well-chosen function name acts as a tiny piece of local documentation.
