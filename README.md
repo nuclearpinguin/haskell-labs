@@ -10,7 +10,7 @@ Notes from lectures and codes from labs. This repo has the following structure:
 ...
 ```
 
-### Additional sources:
+### Additional resources:
 
 https://github.com/geophf/1HaskellADay
 
