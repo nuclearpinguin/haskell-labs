@@ -1,6 +1,6 @@
 module BST (
     Bst, contains, add, search, 
-    leaves, remove, nodeType, t) 
+    leaves, remove, t) 
     where 
 
 import Data.List
@@ -48,62 +48,32 @@ search n@(Node x left right) y
     | y < x = search left y
 
 
--- Returns list of node leaves
+-- Returns list of node's leaves
 leaves :: (Ord a) => Bst a -> [a]
 leaves Nil = []
 leaves (Node x Nil Nil) = [x]
 leaves (Node _ left right) = (leaves left) ++ (leaves right)
 
 
--- Use only to remove node which is a leaf ! !
-removeLeaf :: (Ord a) => Bst a -> a -> Bst a
-removeLeaf Nil _ = Nil
-removeLeaf n@(Node x left right) y 
-    | y < x = Node x (removeLeaf left y) right
-    | y > x = Node x left (removeLeaf right y)
-    | y == x = Nil
-
-
--- Use only to remove node with on subtree ! !
-removeConnector :: (Ord a) => Bst a -> a -> Bst a
-removeConnector Nil _ = Nil
-removeConnector n@(Node x left right) y 
-    | y < x = Node x (removeConnector left y) right
-    | y > x = Node x left (removeConnector right y)
-    | y == x && (left /= Nil) = left
-    | y == x && (right /= Nil) = right
-
-
--- Use only to remove node with both subtrees
-removeMagic :: (Ord a) => Bst a -> a -> Bst a
-removeMagic Nil _ = Nil
-removeMagic n@(Node x left right) y 
-    | y < x = Node x (removeMagic left y) right
-    | y > x = Node x left (removeMagic right y)
-    | y == x = Node succ left nr
+-- Check node's type and remove it in a proer way
+removeMagic :: (Ord a) => Bst a -> Bst a
+removeMagic Nil = Nil
+removeMagic (Node _ Nil Nil) = Nil -- remove leaf
+removeMagic (Node _ Nil right ) = right -- remove connector
+removeMagic (Node _ left Nil) = left -- remove connector
+removeMagic (Node x left right) = Node succ left nr
     where
         succ = head $ sort $ leaves right
-        nr = removeLeaf right succ
-
--- Resolves node type
-nodeType :: (Ord a) => Bst a -> String
-nodeType Nil = "Empty"
-nodeType (Node _ Nil Nil) = "leaf"
-nodeType (Node _ Nil _ ) = "connector"
-nodeType (Node _ _ Nil) = "connector"
-nodeType (Node _ _ _) = "hardone"
+        nr = remove right succ
 
 
--- Removes a node from bst tree
+-- Removes node from bst tree
 remove :: (Ord a) => Bst a -> a -> Bst a
 remove Nil _ = Nil
-remove n y 
-    | t == "leaf" = removeLeaf n y
-    | t == "connector" = removeConnector n y
-    | t == "hardone" = removeMagic n y
-    | otherwise = n
-    where
-        t = nodeType $ search n y
+remove n@(Node x left right) y 
+    | y < x = Node x (remove left y) right
+    | y > x = Node x left (remove right y)
+    | y == x = removeMagic n 
 
 
 -- sample tree
