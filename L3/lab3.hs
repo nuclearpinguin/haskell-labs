@@ -1,5 +1,28 @@
 import Data.List
 
+
+-- #2
+-- fibloop_old :: Integer -> Integer -> Integer -> Integer
+-- fibloop_old n n_1 n_2
+--   | n <= 1 = n_1 + n_2
+--   | otherwise = fibloop_old (n-1) (n_1 + n_2) n_1
+
+-- fib1 :: Integer -> Integer
+-- fib1 n = fibloop_old n 1 0
+
+
+fibloop :: Integer -> Integer -> Integer -> Integer
+fibloop n n_1 n_2
+  | n <= 1 = n_1 + n_2
+  | otherwise = fibloop (n-1) (0 `seq` (n_1 + n_2)) n_1
+
+
+fib2 :: Integer -> Integer
+fib2 n = fibloop n 1 0
+
+main = print (fib2 100000)
+
+
 -- #3
 avg :: [Double] -> Double
 avg [] = 0
@@ -43,6 +66,16 @@ leibnitzpi = 4.0 * (fst $ foldl' (?) (1.0, 1.0) (map (1/) [3, 5 .. 20001]))
         (x, i) ? y = (x  + (-1.0 * i) * y, -1.0 * i)
 
 
+-- #I3
+quickSort :: (Ord a) => [a] -> [a]
+quickSort [] = []
+quickSort (x:xs) = quickSort ls ++ pivots ++ quickSort rs
+    where
+        pivots = filter (==x) (x:xs)
+        ls = filter (<x) xs
+        rs = filter (>x) xs
+
+        
 -- #I7
 -- Sum numbers in list form ex. 103 = [1, 0, 3]
 sumList :: [Int] -> [Int] -> [Int]
