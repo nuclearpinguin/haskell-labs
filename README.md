@@ -12,5 +12,7 @@ Notes from lectures and codes from labs. This repo has the following structure:
 
 ### Additional resources:
 
+http://www.nyu.edu/projects/barker/Lambda/barendregt.94.pdf
+
 https://github.com/geophf/1HaskellADay
 
