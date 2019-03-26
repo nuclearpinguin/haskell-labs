@@ -1,5 +1,3 @@
-## Monads
-
 ## Monad in category theory
 > A monad is a structure that is a lot like a monoid,
 
@@ -7,6 +5,7 @@ If `C` is a category, a monad on `C` consists of an endofunctor  `T : C → C`
 together with two natural transformations: 
 -  `η : 1 → T` (the unit)
 -  `μ : T^2  → T`(the multiplication)
+
 The name “monad” and the terms “unit”, “multiplication” and “associativity” bear a clear analogy with monoids. 
 
 ## Monad in Haskell
@@ -34,7 +33,7 @@ class Monad m where
     (>>=)  :: m a -> (  a -> m b) -> m b
     (>>)   :: m a ->  m b -> m b
     -- a >> f = a >>= \_ -> f
-    return ::   a -> m a
+    return :: a -> m a
     fail   :: String -> m a
 ```
 
@@ -45,3 +44,9 @@ return a >>= k                  =  k a
 m        >>= return             =  m
 m        >>= (\x -> k x >>= h)  =  (m >>= k) >>= h
 ```
+
+
+## Links
+https://wiki.haskell.org/Monad
+
+https://ncatlab.org/nlab/show/monad
