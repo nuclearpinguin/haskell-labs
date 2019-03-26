@@ -17,9 +17,9 @@ Monad could be seen as a structure with:
 ```haskell
 class Monad m where
     -- chain
-    (>>=)  :: m a -> (  a -> m b) -> m b
+    (>>=)  :: m a -> (a -> m b) -> m b
     -- inject
-    return ::   a -> m a
+    return :: a -> m a
 ```
 
 RWH, p. 329
