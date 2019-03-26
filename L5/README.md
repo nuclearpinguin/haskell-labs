@@ -1,5 +1,3 @@
-## Monads
-
 ## Monad in category theory
 > A monad is a structure that is a lot like a monoid,
 
