@@ -7,6 +7,7 @@ If `C` is a category, a monad on `C` consists of an endofunctor  `T : C → C`
 together with two natural transformations: 
 -  `η : 1 → T` (the unit)
 -  `μ : T^2  → T`(the multiplication)
+
 The name “monad” and the terms “unit”, “multiplication” and “associativity” bear a clear analogy with monoids. 
 
 ## Monad in Haskell
