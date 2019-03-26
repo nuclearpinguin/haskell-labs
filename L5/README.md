@@ -45,3 +45,9 @@ return a >>= k                  =  k a
 m        >>= return             =  m
 m        >>= (\x -> k x >>= h)  =  (m >>= k) >>= h
 ```
+
+
+## Links
+https://wiki.haskell.org/Monad
+
+https://ncatlab.org/nlab/show/monad
