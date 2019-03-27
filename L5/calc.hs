@@ -1,8 +1,7 @@
 execute :: [Char] -> Int -> Int -> Int
-execute o a b
-    | o == "+" = a + b
-    | o == "*" = a * b
-    | o == "-" = a - b
+execute "+" a b = a + b
+execute "*" a b = a * b
+execute "-" a b = a - b
 
 
 main :: IO ()

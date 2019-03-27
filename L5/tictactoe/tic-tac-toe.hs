@@ -5,15 +5,11 @@ import Helpers
 -- Check if game is over or not
 checkGameStatus :: Board -> Mark -> IO()
 checkGameStatus b m
-    | inline = putStrLn $ "Game over! Player " ++ (show m) ++ " won!"
-    | full = putStrLn "Game over! Draw."
+    | inLine m b = putStrLn $ "Game over! Player " ++ (show m) ++ " won!"
+    | isFull b = putStrLn "Game over! Draw."
     | otherwise = game b nm
     where
-        inline = inLine m b
-        full = isFull b
-        nm = if (m==X)
-            then O
-            else X
+        nm = if (m==X) then O else X
     
 
 -- Loop for the tic-tac-toe game
