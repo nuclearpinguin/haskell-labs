@@ -2,7 +2,7 @@ Simple tic-tac-toe implemenetation
 
 ```
 *Main> main
-<<<< COSMIN TIC-TAC-TOE >>>>
+<<<< COSMIC TIC-TAC-TOE >>>>
 Who starts? [X / O]
 X
 

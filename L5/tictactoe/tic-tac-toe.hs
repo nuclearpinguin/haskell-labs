@@ -29,7 +29,7 @@ game b m = do
 
 main :: IO()
 main = do
-    putStrLn "<<<< COSMIN TIC-TAC-TOE >>>>"
+    putStrLn "<<<< COSMIC TIC-TAC-TOE >>>>"
     putStrLn "Who starts? [X / O]"
     m <- getLine >>= return . (\x -> read x :: Mark)
     
