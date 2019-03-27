@@ -6,7 +6,7 @@ Simple tic-tac-toe implemenetation
 Who starts? [X / O]
 X
 
- To make a move input something like 'a2'.
+To make a move input something like 'a2'.
   | 1 | 2 | 3
 a |   |   |
 b |   |   |
