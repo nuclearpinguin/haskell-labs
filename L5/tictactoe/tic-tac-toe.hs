@@ -31,11 +31,10 @@ main :: IO()
 main = do
     putStrLn "<<<< COSMIN TIC-TAC-TOE >>>>"
     putStrLn "Who starts? [X / O]"
-    m <- getLine >>= return. (\x -> read x :: Mark)
-    -- let m = read im :: Mark
+    m <- getLine >>= return . (\x -> read x :: Mark)
     
     -- Show board coords
-    putStrLn "\n To make a move input something like 'a2'."
+    putStrLn "\nTo make a move input something like 'a2'."
     putStrLn "  | 1 | 2 | 3"
     putStrLn $ unlines $ map (\(a, b) -> (a ++ b)) (zip ["a | " , "b | ", "c | "] (lines $ show Empty))
 
