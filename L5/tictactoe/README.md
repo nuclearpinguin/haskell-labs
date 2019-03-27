@@ -3,17 +3,25 @@ Simple tic-tac-toe implemenetation
 ```
 *Main> main
 <<<< COSMIN TIC-TAC-TOE >>>>
-To make a move input something like 'a2'.
-Player X starts,
-  |   |
-  |   |
-  |   |
+Who starts? [X / O]
+X
+
+ To make a move input something like 'a2'.
+  | 1 | 2 | 3
+a |   |   |
+b |   |   |
+c |   |   |
 
 Move of player X
-b2
+a3
+  |   | X
   |   |
-  | X |
   |   |
 
 Move of player O
+b2
+  |   | X
+  | O |
+  |   |
+
 ```
