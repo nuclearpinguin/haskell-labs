@@ -2,7 +2,7 @@ module Board where
 import Data.List 
 
 -- Define board markings
-data Mark = E | O | X deriving Eq
+data Mark = E | O | X deriving (Eq, Read)
 
 
 instance Show Mark where

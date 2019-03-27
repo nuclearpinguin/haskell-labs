@@ -2,6 +2,7 @@ import Control.Monad
 import Board 
 import Helpers
 
+-- Check if game is over or not
 checkGameStatus :: Board -> Mark -> IO()
 checkGameStatus b m
     | inline = putStrLn $ "Game over! Player " ++ (show m) ++ " won!"
@@ -29,11 +30,15 @@ game b m = do
 main :: IO()
 main = do
     putStrLn "<<<< COSMIN TIC-TAC-TOE >>>>"
-    putStrLn "To make a move input something like 'a2'."
-    -- putStrLn "Who starts? [X / O]"
-    putStrLn"Player X starts,"
-    -- im <- getLine
+    putStrLn "Who starts? [X / O]"
+    m <- getLine >>= return. (\x -> read x :: Mark)
     -- let m = read im :: Mark
-    print Empty
-    game Empty X
+    
+    -- Show board coords
+    putStrLn "\n To make a move input something like 'a2'."
+    putStrLn "  | 1 | 2 | 3"
+    putStrLn $ unlines $ map (\(a, b) -> (a ++ b)) (zip ["a | " , "b | ", "c | "] (lines $ show Empty))
+
+    -- Start the game
+    game Empty m
     
