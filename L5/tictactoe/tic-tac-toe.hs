@@ -21,8 +21,7 @@ game :: Board -> Mark -> IO()
 game b m = do
     -- Player move
     putStrLn $ "Move of player " ++ show m
-    p <- getLine
-    let b1 = addMark p m b
+    b1 <- getLine >>= return . (\p -> addMark p m b)
     print b1
     checkGameStatus b1 m
 

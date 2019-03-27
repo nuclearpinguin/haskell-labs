@@ -15,7 +15,5 @@ counter hdl = hGetContents hdl >>= return . length . lines
 main :: IO()
 main = do 
     putStrLn "Provide path to file"
-    path <- getLine
-    withFile path ReadMode $ \hdl -> do
-        output <- counter hdl
-        print $ output
+    getLine >>= \p -> withFile p ReadMode $ \hdl -> 
+        counter hdl >>= \x -> print x

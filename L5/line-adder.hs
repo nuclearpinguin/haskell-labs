@@ -36,9 +36,7 @@ main = do
     putStrLn "Name of file to write into"
     name <- getLine >>= \x -> checkExt x
 
-
     withFile path ReadMode $ \hdl -> do
         output <- fileHandler hdl
-        -- print $ output
         withFile name WriteMode $ \hdl -> do
             hPutStr hdl (unlines $ map show output)

@@ -11,9 +11,7 @@ main = do
     putStrLn "What is the symbol between x and y? "
     o <- getLine
     putStrLn "What is the x? "
-    a <- getLine
+    x <- getLine >>= return . (\a -> read a :: Int)
     putStrLn "What is the y? "
-    b <- getLine
-    let x = (read a :: Int)
-    let y = (read b :: Int)
+    y <- getLine >>= return . (\a -> read a :: Int)
     print $ execute o x y
