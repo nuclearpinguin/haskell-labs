@@ -64,10 +64,10 @@ add t@(Node v a b c) (x:xs)
     
 -- A* B
 infTrie :: Trie
-infTrie = foldl' (\x y -> add x ((take y as) ++ [B])) Nil [0,1 .. 10]
+infTrie = foldl' (\x y -> add x ((take y as) ++ [B])) Nil [0,1 ..]
     where
         as = [A, A ..]
 
 test = Node False (Node False (Node True Nil Nil Nil) Nil Nil) (Node True Nil Nil Nil) (Node True Nil (Node True Nil Nil Nil) Nil)
 test2  = add (add Nil [A, B]) [A, A, B, C]
-test3 = contains infTrie [A,A,A,B]
+-- test3 = contains infTrie [A,A,A,B] -- does not work :<
