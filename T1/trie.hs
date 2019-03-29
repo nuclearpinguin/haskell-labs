@@ -64,7 +64,6 @@ add t@(Node v a b c) (x:xs)
     
 -- A* B
 infTrie :: Trie
-infTrie :: Trie
 infTrie = foldl' (\x y -> add x ((take y as) ++ [B])) Nil [0,1 ..]
     where
         as = [A, A ..]
