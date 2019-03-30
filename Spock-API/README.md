@@ -1,6 +1,6 @@
 # Spock-API
 
-Simple REST API build with (spock)[https://www.spock.li]
+Simple REST API build with [spock](https://www.spock.li).
 
 Resources:
 - http://hackage.haskell.org/package/Spock
