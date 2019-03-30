@@ -10,6 +10,11 @@ Notes from lectures and codes from labs. This repo has the following structure:
 ...
 ```
 
+### Tricks
+
+In ghci `:set -XOverloadedStrings` if `{-# LANGUAGE OverloadedStrings #-}` does not work.
+
+
 ### Additional resources:
 
 http://book.realworldhaskell.org/read/
