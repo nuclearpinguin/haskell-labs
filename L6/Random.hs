@@ -1,4 +1,6 @@
 module Random where
+
+import System.IO
 import Control.Monad.State.Lazy
 
 -- Random numbers
@@ -36,4 +38,14 @@ randomList n m a b =
     get >>= \seed -> return $ 
     take (evalState (randomRange n m) seed) $ 
     map (\x ->  (a + x `mod` b) ) [execState randomNumber (seed + x) | x <- [1, 2 .. m]]
-    
+
+
+test :: IO ()
+test = 
+    putStrLn "Random numbers for seed 254123 :" >>
+    putStrLn "- Random number " >>
+    print (evalState randomNumber 254123 )  >>
+    putStrLn "- Random list of length (4, 10) and values (5, 20) :" >>
+    print (evalState (randomList 4 10 5 20) 254123) >>
+    putStrLn "- Random list of values (5, 20) :" >>
+    print (evalState (randomRange 20 35) 254123)
