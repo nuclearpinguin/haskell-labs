@@ -4,10 +4,10 @@ import Control.Monad.State.Lazy
 
 -- QuickSort counter
 
-type Counter = State Int Bool
+type Counter = State Int
 
     
-lessEqCnt :: Int -> Int -> Counter
+lessEqCnt :: Int -> Int -> Counter Bool
 lessEqCnt x y = do
     cnt <- get
     case ( x <= y ) of
@@ -15,14 +15,44 @@ lessEqCnt x y = do
         False -> put (cnt + 1) >> return False
 
 
-showCounter :: Counter -> String
-showCounter cnt = show $ runState cnt 0
+statement :: ([Int], Counter Bool) -> (Int, Counter Bool) -> ([Int], Counter Bool)
+statement (a, b) (c, d) = 
+    if (evalState d 0) 
+    then (a ++ [c], b >> d) 
+    else (a, b >> d)
 
 
--- Calculates number of comparsions in a quick sort run
-quickSortCounter :: [Int] -> Counter
-quickSortCounter [] = return False
-quickSortCounter (y:ys) = 
-    foldl (>>) (return False) [lessEqCnt x y | x <- ys] >>
-    foldl (>>) (return False) [lessEqCnt y x | x <- ys] >>
-    quickSortCounter (filter (<y) ys) >> quickSortCounter (filter (>=y) ys)
+-- Takes list and returns Counter with elements
+-- greater than head of input 
+filterR :: [Int]  -> Counter [Int]
+filterR [] = return []
+filterR (x:xs) = do
+    cnt <- get
+    let (ys, st) = foldl statement ([], return False) [(y, lessEqCnt x y) | y <- xs]    
+    let n = execState st 0
+    put (cnt + n) 
+    return ys
+
+
+-- Takes list and returns Counter with elements
+-- lesser than head of input 
+filterL :: [Int]  -> Counter [Int]
+filterL [] = return []
+filterL (x:xs) = do
+    cnt <- get
+    let (ys, st) = foldl statement ([], return False) [(y, lessEqCnt y x) | y <- xs]    
+    let n = execState st 0
+    put (cnt + n) 
+    return ys
+
+
+quickSortCounter :: Counter [Int] -> Counter [Int]
+quickSortCounter st = do
+    xs <- st
+    case (length xs) of
+        0 -> return xs
+        _ -> quickSortCounter (filterL xs) >> quickSortCounter (filterR xs)
+            
+
+count :: [Int] -> Int
+count xs = snd $ runState (quickSortCounter  (return xs)) 0
