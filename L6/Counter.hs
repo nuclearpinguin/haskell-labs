@@ -10,9 +10,7 @@ type Counter = State Int
 lessEqCnt :: Int -> Int -> Counter Bool
 lessEqCnt x y = do
     cnt <- get
-    case ( x <= y ) of
-        True -> put (cnt + 1) >> return True
-        False -> put (cnt + 1) >> return False
+    put (cnt + 1) >> return (x <= y )
 
 
 statement :: ([Int], Counter Bool) -> (Int, Counter Bool) -> ([Int], Counter Bool)
